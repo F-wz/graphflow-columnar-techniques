@@ -1,0 +1,9 @@
+{
+	"name": "1A",
+	"qstr": "MATCH (v0:Vertex)-[e2:Edge]->(v2:Vertex)
+			RETURN COUNT(*)",
+	"qvo": [
+		"v0",
+		"v2"
+	]
+}

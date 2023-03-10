@@ -24,6 +24,7 @@ public class DataChunks {
     }
 
     public void addVarToPosEntry(String varName, int dataChunkPos, int vectorPos) {
+        // System.out.println("in DataChunks.addVarToPosEntry");
         schema.addVariable(varName, dataChunkPos, vectorPos);
     }
 

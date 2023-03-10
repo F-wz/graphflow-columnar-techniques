@@ -26,6 +26,7 @@ public abstract class PropertyReader extends Operator {
         inVector = dataChunks.getValueVector(nodeOrRelVarName);
         it = inVector.getIterator();
         allocateOutVector();
+        // System.out.println("in PropertyReader.initFurther");
         dataChunks.addVarToPosEntry(variable.getVariableName(), dataChunks.getDataChunkPos(
             nodeOrRelVarName), dataChunk.getNumValueVectors());
         dataChunk.append(outVector);

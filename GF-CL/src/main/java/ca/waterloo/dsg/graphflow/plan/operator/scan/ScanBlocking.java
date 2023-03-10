@@ -49,6 +49,7 @@ public class ScanBlocking extends Operator implements Serializable {
         // var highestOffset = graph.getNumNodesPerType()[type] - 1;
         this.dataChunks = new DataChunks();
         this.dataChunks.append(allocateOutVector());
+        System.out.println("in ScanBlocking.initFurther");
         this.dataChunks.addVarToPosEntry(nodeName, 0 /* dataChunkPos*/, 0 /* vectorPos */);
     }
 

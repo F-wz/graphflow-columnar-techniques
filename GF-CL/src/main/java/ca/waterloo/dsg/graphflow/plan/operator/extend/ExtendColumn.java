@@ -51,6 +51,7 @@ public class ExtendColumn extends Operator {
 
         var dataChunkPos = dataChunks.getDataChunkPos(boundVarName);
         var valueVectorPos = dataChunk.getNumValueVectors();
+        System.out.println("in ExtendColumn.initFurther");
         dataChunks.addVarToPosEntry(toVarName, dataChunkPos, valueVectorPos);
         dataChunks.addVarToPosEntry(relVarName, dataChunkPos, valueVectorPos);
         allocateOutVector(graph, (int) graph.getNumRels());

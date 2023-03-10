@@ -28,6 +28,7 @@ public class QueryParser {
     public static AbstractQuery parseQuery(String strQuery, GraphCatalog catalog)
         throws ParseCancellationException {
         try {
+            System.out.println("parseQuery: " + strQuery);
             AbstractQuery query = parseAntlr(strQuery + ";", catalog);
             if (query instanceof PlainRegularQuery) {
                 var regularQuery = new RegularQuery();

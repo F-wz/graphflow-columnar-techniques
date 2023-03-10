@@ -38,6 +38,7 @@ public class Scan extends Operator implements Serializable {
         this.finalSize = (int) (highestOffset - finalOffset) + 1;
         this.dataChunks = new DataChunks();
         this.dataChunks.append(allocateOutVector());
+        // System.out.println("in Scan.initFurther");
         this.dataChunks.addVarToPosEntry(nodeName, 0 /* dataChunkPos*/, 0 /* vectorPos */);
     }
 

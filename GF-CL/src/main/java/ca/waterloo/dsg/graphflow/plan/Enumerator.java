@@ -88,6 +88,7 @@ public class Enumerator {
         var scan = new Scan(nodeVar, shouldResetSelector(nodeVar) ||
             resetDueToColumnExtend(nodeName, 0 /*extensionIdx*/, QVO));
         physicalSchemaPerStage[0] = new PhysicalSchema();
+        // System.out.println("appendScanAndFilterIfAny: " + nodeName + ".");
         physicalSchemaPerStage[0].addVariable(nodeName, 0 /*dataChunkPos*/, 0 /*vectorPos*/);
         physicalSchemaPerStage[0].dataChunkPosToIsFlatMap.put(0 /*dataChunkPos*/, false);
         var nodeVars = new HashSet<NodeVariable>();
@@ -102,6 +103,7 @@ public class Enumerator {
                 var isFiltered = filteredDataChunkPos.contains(0 /* dataChunkPos */);
                 var propertyVars = filterExpr.getDependentPropertyVars();
                 for (var propertyVar : propertyVars) {
+                    // System.out.println("propertyVar.getPropertyName(): " + propertyVar.getPropertyName() + ".");
                     if (!physicalSchemaPerStage[0].hasVariable(propertyVar.getPropertyName())) {
                         lastOperator = NodePropertyReader.make(propertyVar, false /*isFlat*/,
                             isFiltered, graph.getNodePropertyStore(), lastOperator);
@@ -136,6 +138,7 @@ public class Enumerator {
                 if (catalog.labelDirectionHasMultiplicityOne(label, direction)) {
                     lastOperator = new ExtendColumn(ALD, typeFilter, lastOperator);
                     var chunkPos = prevSchema.getDataChunkPos(boundVarName);
+                    // System.out.println("appendExtend, toVar: " + toVar + ".");
                     currSchema.addVariable(toVar, chunkPos,
                         prevSchema.getNumVectors(chunkPos) /* new vector pos */);
                     filteredDataChunkPos.add(chunkPos);
@@ -149,11 +152,14 @@ public class Enumerator {
                         toVarName, relName) || resetDueToColumnExtend(toVarName, extsIdx, QVO),
                         lastOperator);
                     var newDataChunkPos = prevSchema.dataChunkPosToIsFlatMap.size();
+                    // System.out.println("appendExtend,   relName: " + relName + ".");
+                    // System.out.println("appendExtend, toVarName: " + toVarName + ".");
                     currSchema.addVariable(relName, newDataChunkPos, 0 /* new vector pos */);
                     currSchema.addVariable(toVarName, newDataChunkPos, 1 /* new vector pos */);
                     currSchema.dataChunkPosToIsFlatMap.put(newDataChunkPos, false /*isFlat*/);
                 }
-                break;
+                // break;
+                continue;
             }
         }
 
@@ -188,6 +194,7 @@ public class Enumerator {
 //                                filteredDataChunkPos.contains(dataChunkPos) /*isFiltered*/,
                                     true,
                                 graph.getGraphCatalog(), lastOperator);
+                        // System.out.println("appendExtend, varName: " + varName + ".");
                         currSchema.addVariable(varName, dataChunkPos, currSchema.getNumVectors(
                             dataChunkPos));
                     }

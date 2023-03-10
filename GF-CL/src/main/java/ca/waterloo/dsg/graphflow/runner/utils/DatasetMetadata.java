@@ -58,6 +58,7 @@ public class DatasetMetadata {
     public static DatasetMetadata readDatasetMetadata(String path) throws IOException {
         var GSONBuilder = new GsonBuilder();
         GSONBuilder.registerTypeAdapter(Cardinality.class, new CardinalityDeserializer());
+        System.out.println(path + "metadata.json");
         var JSONFileData = Files.readAllBytes(Paths.get(path + "metadata.json"));
         return GSONBuilder.create().fromJson(new JsonReader(new StringReader(new String(
             JSONFileData, StandardCharsets.US_ASCII))), DatasetMetadata.class);

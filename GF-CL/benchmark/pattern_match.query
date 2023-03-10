@@ -1,0 +1,19 @@
+{
+	"name": "1A",
+	"qstr": "MATCH (v0:Vertex)-[e2:Edge]->(v2:Vertex),
+			 MATCH (v0:Vertex)-[e3:Edge]->(v3:Vertex),
+			 MATCH (v3:Vertex)-[e5:Edge]->(v2:Vertex), 
+			 MATCH (v4:Vertex)-[e4:Edge]->(v2:Vertex)
+			WHERE v0.label = 2 AND v2.label = 10 AND 
+				  v3.label = 2 AND v4.label = 2 AND
+				  e2.label = 1006 AND e3.label = 1013 AND 
+				  e4.label = 1006 AND e5.label = 1006
+			RETURN COUNT(*)",
+	"qvo": [
+		"v0",
+		"v3",
+		"v2",
+		"v4"
+	]
+}
+

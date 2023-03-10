@@ -52,6 +52,7 @@ public class ExtendAdjLists extends Operator implements Serializable {
         var nbrVarName = ALD.getToNodeVariable().getVariableName();
         var relName = ALD.getRelVariable().getVariableName();
         var outDataChunkIdx = dataChunks.size();
+        // System.out.println("in ExtendAdjLists.initFurther");
         dataChunks.addVarToPosEntry(nbrVarName, outDataChunkIdx, 0 /* vectorPos */);
         dataChunks.addVarToPosEntry(relName, outDataChunkIdx, 0 /* vectorPos */);
         outVector = VectorAdjEdgesFactory.make(graph.getGraphCatalog(),

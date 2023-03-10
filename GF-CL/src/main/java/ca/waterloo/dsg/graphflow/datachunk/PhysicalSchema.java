@@ -16,6 +16,7 @@ public class PhysicalSchema implements Serializable {
     private final Map<String, Pair<Integer, Integer>> varToDataChunkAndVectorPosMap = new HashMap<>();
 
     public void addVariable(String varName, int dataChunkPos, int vectorPos) {
+        // System.out.println("addVariable: " + varName + ".");
         varToDataChunkAndVectorPosMap.put(varName, new Pair<>(dataChunkPos, vectorPos));
         dataChunkPosToNumVectors.putIfAbsent(dataChunkPos, 0);
         dataChunkPosToNumVectors.put(dataChunkPos, dataChunkPosToNumVectors.get(dataChunkPos) + 1);
@@ -35,6 +36,8 @@ public class PhysicalSchema implements Serializable {
     }
 
     public int getDataChunkPos(String varName) {
+        // System.out.println(varName);
+        // System.out.println(varToDataChunkAndVectorPosMap);
         return varToDataChunkAndVectorPosMap.get(varName).a;
     }
 

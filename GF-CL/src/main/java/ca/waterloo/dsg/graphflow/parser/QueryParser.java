@@ -30,6 +30,7 @@ public class QueryParser {
         try {
             System.out.println("parseQuery: " + strQuery);
             AbstractQuery query = parseAntlr(strQuery + ";", catalog);
+            System.out.println(" here! ");
             if (query instanceof PlainRegularQuery) {
                 var regularQuery = new RegularQuery();
                 Schema curSchema = null;
@@ -59,8 +60,11 @@ public class QueryParser {
 
     private static AbstractQuery parseAntlr(String query, GraphCatalog catalog)
         throws ParseCancellationException {
+        System.out.println("parseAntlr 0");;
         GraphflowParser parser = getParser(query);
+        System.out.println("parseAntlr 1");;
         var visitor = new ParseTreeVisitor(catalog);
+        System.out.println("parseAntlr 2");;
         return (AbstractQuery) visitor.visit(parser.oC_Cypher() /* parseTree */);
     }
 

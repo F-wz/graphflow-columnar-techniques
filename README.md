@@ -67,3 +67,9 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 [GraphflowDB Project](http://graphflow.io)
 
 Created at [Data Systems Group](https://uwaterloo.ca/data-systems-group/), [University of Waterloo](https://uwaterloo.ca), Canada.
+
+
+Based on Java 11, configuration:
+```
+export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
+```
